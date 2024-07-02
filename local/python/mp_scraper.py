@@ -27,7 +27,7 @@ def download_goalies(driver, season_type, year):
     df['Name'] = df['Name'].str.extract(r'(\d+)([A-Za-z ]+)', expand=True)[1].str.strip()
     df_cleaned = df.dropna(subset=['Name'])
     
-    df_cleaned.to_csv(f"local/data/mp/mp_{season_type}_{year}_goalies.csv", index=False, sep="|")
+    df_cleaned.to_csv(f"local/data/mp/mp_{season_type}_{year}_goalies.csv", index=False)
 
 def main():
     """
