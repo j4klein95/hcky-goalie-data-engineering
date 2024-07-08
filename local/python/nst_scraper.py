@@ -54,11 +54,9 @@ def main():
 
             submit_button.click()
 
-            WebDriverWait(driver, 20).until(
+            WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, "//div[@id='players_wrapper']//table/tbody/tr"))
             )
-
-            time.sleep(10)
 
             df = scrape_table_with_bs4(driver)
 
@@ -67,7 +65,7 @@ def main():
             else:
                 logging.info(f"Creating data file for {year} - {season_type}")
 
-            df.to_csv(f"local/data/nst/nst_{season_type}_{year}_goalies.csv", index=False, sep="|")
+            df.to_csv(f"local/data/nst/nst_{season_type}_{year}_goalies.csv", index=False)
 
     driver.quit()
 
